@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="css선택자 3" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 형제 관계 선택자 */
+            #div-test1{
+                background-color: red;
+            }
+
+            /* 해당 요소 바로 다음에 특정 타입요소 선택 */
+            #div-test1 + div {
+                background-color: green;
+            }
+
+            /* 해당 요소보다 뒤에 존재하는 특정 타입요소 모두 선택
+            #div-test2 ~ div {
+                background-color: rgb(161, 77, 161);
+            } */
+
+            
+            #test :first-child {
+                background-color: red;
+            }
+            
+            #test :last-child {
+                background-color: blue;
+            }
+
+            /* 형제 관계 태그 중 앞에서 수열번 째 태그 선택 */
+            #test :nth-child(2n){
+                background-color: seagreen;
+            }
+
+            /* 마지막을 처음 기준으로 시작 */
+            #test :nth-last-child(4) {
+                background-color: blue;
+            }
+
+            /* 태그 중 가장 처음에 있는 타입만 골라주게됨 */
+            #test2 :first-of-type {
+                background-color: wheat;
+            }
+
+            /* 태그 중 가장 마지막에 있는 타입만 골라주게됨 */
+            #test2 :last-of-type {
+                background-color: red;
+            }
+
+            #test2 p:nth-of-type(2n) {
+                background-color: teal;
+            }
+
+            /* p 태그 중 뒤에서 3번째 */
+            #test2 p:nth-last-of-type(3) {
+                background-color: darkgoldenrod;
+            }
+
+            /* 짝수 : even/2n 홀수 : odd/2n-1 */
+            #test3 p:not(:nth-child(odd)){
+                background-color: olivedrab;
+            }
+
+            /* 맨앞 한 글자 크기 바꾸기 */
+            #test4 p:first-letter {
+                font: 50px bold;
+            }
+
+            /* 한 문장 색바꾸기 */
+            #test4 p:first-line {
+                background-color: coral;
+            }
+
+            /* 사용자가 드래그한 글자 선택 */
+            /* :: 가상의 요소를 의미한다. */
+            #test4 p::selection {
+                background-color: grey;
+            }
+
+
+    </style>
+</head>
+<body>
+    <h2>동위 선택자</h2>
+    <p>동위 관계(형제 관계) 에서 뒤에 위치한 태그를
+       선택할 때 사용이 된다.
+    </p>
+    <pre>
+        바로 뒤의 요소를 선택 할 시
+        선택자a + 선택자b {설정내용} 을 사용하며
+        뒤에 있는 모든 요소를 선택할 시에는
+        선택자a ~ 선택자b {설정내용} 을 사용한다.
+    </pre>
+    <div id="div-test1">div-test1</div>
+    <div id="div-test2">div-test2</div>
+    <div id="div-test3">div-test3</div>
+    <div id="div-test4">div-test4</div>
+    <div id="div-test5">div-test5</div>
+    <script type="text/javascript">
+        window.onload = function(){
+            let seconed = 
+            document.querySeletor('div[id=div-test2]')
+            console.log(typeof second);
+        }
+    </script>
+    <hr>
+    <h2>일반 구조 선택자</h2>
+    <p>특정한 위치에 있는 태그 선택하기(위치로 구분)</p>
+    <div id="test">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+    <h2>형태 구조 선택자(태그로 구분)</h2>
+    <p>특정 위치에 있는 태그 선택(태그별 구분)</p>
+    <div id="test2">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+    <p>지금까지의 선택자에 대해 반대로 적용하는 선택자</p>
+    <div id="test3">
+        <p>김관훈</p>
+        <p>정은미</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+    <h2>문자 선택자</h2>
+    <p>태그 내부에 있는 특정 조건의 문자를 선택</p>
+    <div id="test4">
+        <p>절대음감절대음감절대음감</p>
+    </div>
+
+
+
+</body>
+</html>
