@@ -6,6 +6,7 @@
     <title>css선택자 2</title>
 </head>
     <style>
+
     /* HTML 문서 내에 스타일 정의 -> 내부 스타일 시트 방식 */
     
     /* 속성 값과 일치하는 객체(태그, 요소) 선택 */
@@ -13,33 +14,78 @@
     div[name=name2]{
         background: orange;
     }
+
     /* 속성 안의 값이 특정 값을 띄어쓰기 단위로 포함하는 객체 선택 */
     /* (~=) 띄어쓰기 단위도 포함한다. ex) name1 name5 name6 */
     div[name~=name6] {
         background: yellow;
     }
+
     /* 속성 값이 특정 값과 일치하거나 '-' 문자가 곧바로 해당 값 뒤에 붙는 객체 선택 */
     div[class|=class] {
         background-color: cornflowerblue;
         /* (|=) class 혹은 class-  */
     }
+
     /* 속성 값을 가지고 있으며, 접두사로 값이 포함되어 있는 객체 sql %__*/
     div[name^=name] {
         background-color: blueviolet;
     }
+
     /* ex name^= name이 들어가있는 모든곳이 바뀐다. */
     /* 속성 안의 값이 특정 값으로 끝나는(접미사) 객체 선택 sql __% */
     div[class$=class] {
         color: aliceblue;
     }
+
     /* 속성 안의 값이 특정 값을 포함하는 객체 선택 sql %__% */
     div[class*=div] {
         background-color: blueviolet;
         color: black;
     }
+
     /* 자손 선택자 테스트 */
     #test1>h4 {
         background-color: hotpink;
+    }
+
+    /* 후손 선택자 테스트 */
+    #test1 ul {
+        background-color: blanchedalmond;
+    }
+    /* >는 자식이지만 후손은 한칸을띄어준다 ex) #test1 ul */
+
+    /* 형제 관계 선택자 테스트 (동위[같은위치] 선택자) */
+    
+
+
+    /* css 에서 제공하는 이벤트 관련 선택자 */
+    #active-test:active{
+        background-color: rgb(241, 142, 142);
+        color: white;
+    }
+    #hover-test:hover{
+        cursor: pointer;
+        background-color: darkgreen;
+        color: bisque;
+        font: 60px bold;
+    }
+
+    input[type=checkbox]:checked {
+        width: 100px;
+        height: 100px;
+    }
+
+    #userId:focus, #userPwd:focus{
+        background-color: hotpink;
+    }
+
+    option:enabled {
+        background-color: greenyellow;
+    }
+
+    option:disabled {
+        background-color: darkred;
     }
     </style>
 <body>
@@ -71,5 +117,52 @@
             </ul>
         </div>
     </div>
+    <hr>
+    <h2>반응 선택자</h2>
+    <p>사용자의 행동에 따라 달라지는 선택자</p>
+    <pre>
+        사용자가 클릭을 한 태그
+        <br>
+        - 공식 :  선택자:active{설정내용}
+        <br>
+        사용자의 마우스가 올라온 태그
+        <br>
+        - 공식 :  선택자:hover{설정내용}
+    </pre>
+    <div id="active-test">active 테스트</div>
+    <div id="hover-test">hover 테스트</div>
+    <hr>
+    <h2>상태 선택자</h2>
+    <p>입력 양식의 상태에 따라서 선택 되는 선택자</p>
+    <input type="checkbox" name="fruits" value="사과" id="apple">
+    <label for="apple">사과</label>
+    <input type="checkbox" name="fruits" value="바나나" id="banana">
+    <label for="banana">바나나</label>
+    <input type="checkbox" name="fruits" value="포도" id="grape">
+    <label for="grape">포도</label>
+    <hr>
+    <label for="useId">아이디 : </label>
+    <input type="text" id="userId" placeholder="아이디 입력">
+    <br>
+    <label for="userPwd">비밀번호 : </label>
+    <input type="text" id="userPwd" placeholder="비밀번호 입력">
+    <hr>
+    <p>사용 가능한 input 태그 선택</p>
+    <pre>
+        태그:enabled{설정내용}
+        태그:disabled{설정내용}
+    </pre>
+    <h3>주문 물품 선택</h3>
+    <select>
+        <option value="붕어빵" disabled>붕어빵</option>
+        <option value="피자빵">피자빵</option>
+        <option value="모카빵">모카빵</option>
+        <option value="소금빵">소금빵</option>
+        <option value="소보루">소보루</option>
+        <option value="모닝빵" disabled>모닝빵</option>
+    </select>
+    <input type="text" disabled>
+    <button disabled>눌리지 않는 버튼</button>
+
 </body>
 </html>
