@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css선택자 2</title>
+</head>
+    <style>
+    /* HTML 문서 내에 스타일 정의 -> 내부 스타일 시트 방식 */
+    
+    /* 속성 값과 일치하는 객체(태그, 요소) 선택 */
+
+    div[name=name2]{
+        background: orange;
+    }
+    /* 속성 안의 값이 특정 값을 띄어쓰기 단위로 포함하는 객체 선택 */
+    /* (~=) 띄어쓰기 단위도 포함한다. ex) name1 name5 name6 */
+    div[name~=name6] {
+        background: yellow;
+    }
+    /* 속성 값이 특정 값과 일치하거나 '-' 문자가 곧바로 해당 값 뒤에 붙는 객체 선택 */
+    div[class|=class] {
+        background-color: cornflowerblue;
+        /* (|=) class 혹은 class-  */
+    }
+    /* 속성 값을 가지고 있으며, 접두사로 값이 포함되어 있는 객체 sql %__*/
+    div[name^=name] {
+        background-color: blueviolet;
+    }
+    /* ex name^= name이 들어가있는 모든곳이 바뀐다. */
+    /* 속성 안의 값이 특정 값으로 끝나는(접미사) 객체 선택 sql __% */
+    div[class$=class] {
+        color: aliceblue;
+    }
+    /* 속성 안의 값이 특정 값을 포함하는 객체 선택 sql %__% */
+    div[class*=div] {
+        background-color: blueviolet;
+        color: black;
+    }
+    /* 자손 선택자 테스트 */
+    #test1>h4 {
+        background-color: hotpink;
+    }
+    </style>
+<body>
+    <h1>CSS 선택자 내부 속성 방식</h1>
+    <hr>
+    <h2>기본 속성 선택자</h2>
+    <!-- 속성이란? input type에 태그를 말한다. -->
+    <p>기본 선택자 뒤에 [] 기호를 사용해서 속성과 속성 값을
+        사용할 수 있다. 주로 id 나 class 속성이 아닌 것들에 적용
+    <br>
+            공식 : 선택자[속성명=속성값]{설정할 내용}</p>
+    <div name="name1 name5 name6" class="div-class">div1</div>
+    <div name="name2" class="div-class">div2</div>
+    <div name="name3" class="div-class">div3</div>
+    <div name="name4"class="class-div">div4</div>
+    <hr>
+    <h2>후손 선택자 와 자손 선택자</h2>
+    <p>
+        자손선택자 : 바로 아래에 있는 요소<br>
+        후손선택자 : 하위 요소 전부를 의미
+    </p>
+    <div id="test1">
+        <h4>자손 1번 입니다.</h4>
+        <h4>자손 2번 입니다.</h4>
+        <div>
+            <ul id="testul">리스트
+                <li>ul 태그에 자손이면서, div 태그의 후손</li>
+                <li>ul 태그에 자손이면서, div 태그의 후손2</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
